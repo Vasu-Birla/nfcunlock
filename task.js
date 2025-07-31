@@ -2,7 +2,7 @@
 import { exec } from 'child_process';
 import notifier from 'node-notifier';
 
-// Replace this with your NFC card UID (without colons)
+// Replace this UID with your NFC card UID (without colons)
 const allowedUID = "04C15CDC2B0389";
 
 const checkNFC = () => {
@@ -18,9 +18,9 @@ const checkNFC = () => {
       console.log("🔍 Detected UID:", uid);
 
       if (uid === allowedUID) {
-        console.log("✅ Access Granted — taking screenshot...");
-        notifier.notify({ title: 'NFC Trigger', message: '✅ Card matched — Screenshot captured' });
-        takeScreenshot();
+        console.log("📞 Calling 7999806490...");
+        notifier.notify({ title: 'NFC Trigger', message: '📞 Calling 7999806490' });
+        makePhoneCall();
       } else {
         console.log("❌ Invalid UID");
         notifier.notify({ title: 'NFC Trigger', message: '❌ Unauthorized Card' });
@@ -31,15 +31,12 @@ const checkNFC = () => {
   });
 };
 
-const takeScreenshot = () => {
-  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const path = `/sdcard/Download/nfc_capture_${timestamp}.png`;
-
-  exec(`su -c "screencap -p '${path}'"`, (err) => {
+const makePhoneCall = () => {
+  exec('termux-telephony-call 7999806490', (err) => {
     if (err) {
-      console.error("❌ Screenshot failed:", err.message);
+      console.error("❌ Failed to initiate call:", err.message);
     } else {
-      console.log(`📸 Screenshot saved at: ${path}`);
+      console.log("✅ Call command sent.");
     }
   });
 };
