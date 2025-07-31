@@ -5,7 +5,8 @@
   "description": "",
   "main": "unlock.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon unlock.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/Vasu-Birla/nfcunlock#readme",
   "dependencies": {
-    "node-notifier": "^10.0.1"
+    "node-notifier": "^10.0.1",
+    "nodemon": "^3.1.10"
   }
 }
