@@ -3,7 +3,7 @@ import { exec } from 'child_process';
 import notifier from 'node-notifier';
 
 // Replace this UID with your card's UID (no colons)
-const allowedUID = "04ABC5117F2880";
+const allowedUID = "04C15CDC2B0389";
 
 const checkNFC = () => {
   exec('nfc-poll', (err, stdout, stderr) => {
